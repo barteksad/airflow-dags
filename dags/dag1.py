@@ -13,6 +13,7 @@ with DAG(
     default_args={
 				"owner": "airflow",
 		},
+		tags=["example"],
 ) as dag:
     
 		task1 = BashOperator(
