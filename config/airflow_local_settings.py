@@ -11,7 +11,7 @@ TASK_RULES: List[Callable[[BaseOperator], None]] = [
   check_task_user,
 ]
 
-def example_task_policy(task: BaseOperator):
+def task_policy(task: BaseOperator):
     _check_task_rules(task)
 
 def _check_task_rules(current_task: BaseOperator):
