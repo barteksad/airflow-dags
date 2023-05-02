@@ -5,14 +5,23 @@ from typing import Callable, List
 from airflow.models.baseoperator import BaseOperator
 from airflow.exceptions import AirflowClusterPolicyViolation
 
-from rules.task_user import check_task_user
+
+def _check_task_user(task: BaseOperator):
+    """Ensure Tasks have non-default owners."""
+    if task.run_as_user and task.run_as_user != 'airflow':
+        raise AirflowClusterPolicyViolation(
+            f"Task {task.task_id} has user different than 'airflow'. Task user: {task.run_as_user}."
+        )
+
 
 TASK_RULES: List[Callable[[BaseOperator], None]] = [
-  check_task_user,
+    _check_task_user,
 ]
+
 
 def task_policy(task: BaseOperator):
     _check_task_rules(task)
+
 
 def _check_task_rules(current_task: BaseOperator):
     """Check task rules for given task."""
