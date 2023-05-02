@@ -9,10 +9,6 @@ from airflow.operators.bash import BashOperator
     schedule_interval="0 0 * * *",
     start_date=datetime(2021, 1, 1),
     catchup=False,
-    max_active_runs=1,
-    default_args={
-				"owner": "airflow",
-		},
 		tags=["example"],
 )
 def example_dag_1():
