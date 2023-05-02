@@ -1,10 +1,10 @@
 
-from datetime import datetime, timedelta
+from datetime import datetime
 
-from airflow.models import DAG
+from airflow.decorators import dag
 from airflow.operators.bash import BashOperator
 
-with DAG(
+@dag(
     "example_dag_1",
     schedule_interval="0 0 * * *",
     start_date=datetime(2021, 1, 1),
@@ -14,13 +14,16 @@ with DAG(
 				"owner": "airflow",
 		},
 		tags=["example"],
-) as dag:
-    
+)
+def example_dag_1():
+		
+
 		task1 = BashOperator(
-				task_id="task1",
-				bash_command="echo 'Hello from task1!'",
-				run_as_user="airflow",
-		)
+					task_id="task1",
+
+					bash_command="echo 'Hello from task1!'",
+					run_as_user="airflow",
+			)
 
 		task2 = BashOperator(
 				task_id="task2",
@@ -30,3 +33,4 @@ with DAG(
 
 		task1 >> task2
 
+dag = example_dag_1()
