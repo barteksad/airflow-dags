@@ -1,4 +1,3 @@
-from airflow.models.taskinstance import TaskInstance
 from airflow.models.baseoperator import BaseOperator
 from airflow.exceptions import AirflowClusterPolicyViolation
 

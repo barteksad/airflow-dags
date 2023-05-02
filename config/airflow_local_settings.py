@@ -1,15 +1,13 @@
 # $AIRFLOW_HOME/config/airflow_local_settings.py
 
-from typing import Callable
+from typing import Callable, List
 
-from airflow.models import DAG
-from airflow.models.taskinstance import TaskInstance
 from airflow.models.baseoperator import BaseOperator
 from airflow.exceptions import AirflowClusterPolicyViolation
 
 from rules.task_user import check_task_user
 
-TASK_RULES: list[Callable[[BaseOperator], None]] = [
+TASK_RULES: List[Callable[[BaseOperator], None]] = [
   check_task_user,
 ]
 
