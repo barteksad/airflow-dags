@@ -20,7 +20,6 @@ def example_dag_1():
 
 		task1 = BashOperator(
 					task_id="task1",
-
 					bash_command="echo 'Hello from task1!'",
 					run_as_user="airflow",
 			)
