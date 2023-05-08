@@ -6,7 +6,7 @@ from airflow.operators.bash import BashOperator
 
 
 @dag(
-    "example_dag_1",
+    "example_dag_ok",
     schedule_interval="0 0 * * *",
     start_date=datetime(2021, 1, 1),
     catchup=False,
