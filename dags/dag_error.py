@@ -11,7 +11,7 @@ from airflow.operators.bash import BashOperator
     start_date=datetime(2021, 1, 1),
     catchup=False,
     tags=["example"],
-    default_args={"run_as_user": "airflow"},
+    default_args={"run_as_user": "user1"},
 )
 def example_dag_1():
 
@@ -24,7 +24,7 @@ def example_dag_1():
     task2 = BashOperator(
         task_id="task2",
         bash_command="echo 'Hello from task2!'",
-        run_as_user="not_airflow",
+        run_as_user="user2",
     )
 
     task1 >> task2
