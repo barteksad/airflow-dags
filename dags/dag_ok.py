@@ -14,6 +14,7 @@ from airflow.operators.bash import BashOperator
     default_args={"run_as_user": "user1"},
 )
 def example_dag_1():
+    
 
     task1 = BashOperator(
         task_id="task1",
