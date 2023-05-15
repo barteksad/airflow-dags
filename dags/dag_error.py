@@ -7,6 +7,7 @@ from airflow.operators.bash import BashOperator
 
 @dag(
         
+			
     "example_dag_error",
     schedule_interval="0 0 * * *",
     start_date=datetime(2021, 1, 1),
